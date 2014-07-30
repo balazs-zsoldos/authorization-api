@@ -19,19 +19,19 @@ package org.everit.osgi.authorization;
 /**
  * Low level API to manage permissions and permission inheritances.
  */
-public interface AurhorizationManager {
+public interface AuthorizationManager {
 
     /**
      * Defining a new permission.
      *
      * @param authorizedResourceId
      *            The resource id of the entity who is authorized.
-     * @param action
-     *            The action that can be made on the target resource.
      * @param targetResourceId
      *            The resource id of the entity which we defined the action on.
+     * @param action
+     *            The action that can be made on the target resource.
      */
-    void addPermission(long authorizedResourceId, String action, long targetResourceId);
+    void addPermission(long authorizedResourceId, long targetResourceId, String action);
 
     /**
      * Specifying a new permission inheritance. The child will inherit all of the permissions of the parent.
@@ -44,16 +44,21 @@ public interface AurhorizationManager {
     void addPermissionInheritance(long parentResourceId, long childResourceId);
 
     /**
+     * Clears the cache of the authorization component.
+     */
+    void clearCache();
+
+    /**
      * Removes a permission definition.
      *
      * @param authorizedResourceId
      *            The resource id of the entity who is authorized.
-     * @param action
-     *            The action that can be made on the target resource.
      * @param targetResourceId
      *            The resource id of the entity which we defined the action on.
+     * @param action
+     *            The action that can be made on the target resource.
      */
-    void removePermission(long authorizedResourceId, String action, long targetResourceId);
+    void removePermission(long authorizedResourceId, long targetResourceId, String action);
 
     /**
      * Removes a permission inheritance.
