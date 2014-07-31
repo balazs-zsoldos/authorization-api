@@ -42,7 +42,10 @@ public interface PermissionChecker {
      *            The action of the permission. Cannot be <code>null</code>.
      * @param targetResourceId
      *            The id of the resource that the authorized resource may have permission on.
-     * @return <code>true</code> if there is available permission, <code>false</code> otherwise.
+     * @return <code>true</code> if there is available permission, <code>false</code> otherwise. The function returns
+     *         false if the authorized resource or target resource does not exist.
+     * @throws NullPointerException
+     *             if action parameter is null.
      */
     boolean hasPermission(long authorizedResourceId, long targetResourceId, String action);
 

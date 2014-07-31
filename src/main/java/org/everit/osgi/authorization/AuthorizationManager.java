@@ -30,6 +30,10 @@ public interface AuthorizationManager {
      *            The resource id of the entity which we defined the action on.
      * @param action
      *            The action that can be made on the target resource.
+     * @throws IllegalArgumentException
+     *             if any of the resource ids do not exist.
+     * @throws NullPointerException
+     *             if the action parameter is null.
      */
     void addPermission(long authorizedResourceId, long targetResourceId, String action);
 
@@ -57,6 +61,8 @@ public interface AuthorizationManager {
      *            The resource id of the entity which we defined the action on.
      * @param action
      *            The action that can be made on the target resource.
+     * @throws NullPointerException
+     *             if the action parameter is null.
      */
     void removePermission(long authorizedResourceId, long targetResourceId, String action);
 
