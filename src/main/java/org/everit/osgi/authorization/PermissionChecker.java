@@ -16,6 +16,8 @@
  */
 package org.everit.osgi.authorization;
 
+import java.util.Set;
+
 /**
  * Check permissions.
  */
@@ -29,7 +31,7 @@ public interface PermissionChecker {
      *            The id of the authorized resource.
      * @return The parent resource IDs AND the resourceId parameter.
      */
-    long[] getAuthorizationScope(long resourceId);
+    Set<Long> getAuthorizationScope(long resourceId);
 
     /**
      * Check whether the authorized resource has the permission with the given parameters.
