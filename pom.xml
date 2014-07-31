@@ -83,7 +83,7 @@
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Export-Package>
-              ${project.artifactId}
+              org.everit.osgi.authorization.*
             </Export-Package>
           </instructions>
         </configuration>
