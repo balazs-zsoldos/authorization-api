@@ -17,7 +17,8 @@
 package org.everit.osgi.authorization;
 
 /**
- * Low level API to manage permissions and permission inheritances.
+ * Low level API to manage permissions and permission inheritances. The implementation should handle JTA based
+ * distributed transactions.
  */
 public interface AuthorizationManager {
 
