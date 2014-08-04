@@ -44,7 +44,7 @@ public interface PermissionChecker {
      * @return <code>true</code> if there is available permission, <code>false</code> otherwise. The function returns
      *         false if the authorized resource or target resource does not exist.
      * @throws NullPointerException
-     *             if action parameter is null.
+     *             if action parameter is a null array or one of the actions is null.
      * @throws IllegalArgumentException
      *             if a zero length array argument is passed for the action parameter.
      */
