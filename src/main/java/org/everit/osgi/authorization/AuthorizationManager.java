@@ -84,4 +84,14 @@ public interface AuthorizationManager {
      */
     void removePermissionInheritance(long parentResourceId, long childResourceId);
 
+    /**
+     * Getting the resources that the current authorized resource inherits the rights from. In practice these could mean
+     * user groups or roles that a user is assigned to.
+     *
+     * @param authorizedResourceId
+     *            The id of the authorized resource.
+     * @return The parent resource IDs transitively and the resourceId parameter.
+     */
+    long[] getAuthorizationScope(long authorizedResourceId);
+
 }
