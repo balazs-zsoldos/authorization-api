@@ -54,6 +54,13 @@ public interface AuthorizationManager {
     void clearCache();
 
     /**
+     * There must be only one system resource and it has permission to do everything.
+     *
+     * @return The resource id of the system.
+     */
+    long getSystemResourceId();
+
+    /**
      * Removes a permission definition. If there was no such permission, nothing will happen.
      *
      * @param authorizedResourceId
@@ -76,4 +83,5 @@ public interface AuthorizationManager {
      *            The resource id of the child entity (e.g. user).
      */
     void removePermissionInheritance(long parentResourceId, long childResourceId);
+
 }
