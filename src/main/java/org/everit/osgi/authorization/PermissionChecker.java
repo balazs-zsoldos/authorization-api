@@ -16,7 +16,6 @@
  */
 package org.everit.osgi.authorization;
 
-
 /**
  * Checking permissions.
  */
@@ -28,7 +27,7 @@ public interface PermissionChecker {
      *
      * @param authorizedResourceId
      *            The id of the authorized resource.
-     * @return The parent resource IDs AND the resourceId parameter.
+     * @return The parent resource IDs transitively and the resourceId parameter.
      */
     long[] getAuthorizationScope(long authorizedResourceId);
 
@@ -37,15 +36,18 @@ public interface PermissionChecker {
      *
      * @param authorizedResourceId
      *            The id of the resource that we check permissions for.
-     * @param action
-     *            The action of the permission. Cannot be <code>null</code>.
+     * @param actions
+     *            One or more actions. If multiple actions are provided, the function returns true if the authorized
+     *            resource can do any of the actions on the target. At least one action must be defined.
      * @param targetResourceId
      *            The id of the resource that the authorized resource may have permission on.
      * @return <code>true</code> if there is available permission, <code>false</code> otherwise. The function returns
      *         false if the authorized resource or target resource does not exist.
      * @throws NullPointerException
      *             if action parameter is null.
+     * @throws IllegalArgumentException
+     *             if a zero length array argument is passed for the action parameter.
      */
-    boolean hasPermission(long authorizedResourceId, long targetResourceId, String action);
+    boolean hasPermission(long authorizedResourceId, long targetResourceId, String... actions);
 
 }

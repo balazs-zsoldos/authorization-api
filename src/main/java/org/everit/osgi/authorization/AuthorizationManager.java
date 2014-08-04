@@ -31,8 +31,6 @@ public interface AuthorizationManager {
      *            The resource id of the entity which we defined the action on.
      * @param action
      *            The action that can be made on the target resource.
-     * @throws IllegalArgumentException
-     *             if any of the resource ids do not exist.
      * @throws NullPointerException
      *             if the action parameter is null.
      */
@@ -49,12 +47,14 @@ public interface AuthorizationManager {
     void addPermissionInheritance(long parentResourceId, long childResourceId);
 
     /**
-     * Clears the cache of the authorization component.
+     * Clears the cache of the authorization component. This might be necessary only after a 3rdparty component does a
+     * bulk update on the permission or permission inheritance table. E.g.: grant a permission for all users who have a
+     * special attribute.
      */
     void clearCache();
 
     /**
-     * Removes a permission definition.
+     * Removes a permission definition. If there was no such permission, nothing will happen.
      *
      * @param authorizedResourceId
      *            The resource id of the entity who is authorized.
@@ -68,7 +68,7 @@ public interface AuthorizationManager {
     void removePermission(long authorizedResourceId, long targetResourceId, String action);
 
     /**
-     * Removes a permission inheritance.
+     * Removes a permission inheritance. If there was no such inheritance, nothing will happen.
      *
      * @param parentResourceId
      *            The resource id of the parent entity (role, user group, ...).
