@@ -22,6 +22,23 @@ package org.everit.osgi.authorization;
 public interface PermissionChecker {
 
     /**
+     * Getting the resources that the current authorized resource inherits the rights from. In practice these could mean
+     * user groups or roles that a user is assigned to.
+     *
+     * @param authorizedResourceId
+     *            The id of the authorized resource.
+     * @return The parent resource IDs transitively and the resourceId parameter.
+     */
+    long[] getAuthorizationScope(long authorizedResourceId);
+
+    /**
+     * There must be only one system resource and it has permission to do everything.
+     *
+     * @return The resource id of the system.
+     */
+    long getSystemResourceId();
+
+    /**
      * Check whether the authorized resource has the permission with the given parameters.
      *
      * @param authorizedResourceId
@@ -39,5 +56,4 @@ public interface PermissionChecker {
      *             if a zero length array argument is passed for the action parameter.
      */
     boolean hasPermission(long authorizedResourceId, long targetResourceId, String... actions);
-
 }

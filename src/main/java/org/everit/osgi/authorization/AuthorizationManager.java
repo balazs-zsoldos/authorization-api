@@ -54,23 +54,6 @@ public interface AuthorizationManager {
     void clearCache();
 
     /**
-     * Getting the resources that the current authorized resource inherits the rights from. In practice these could mean
-     * user groups or roles that a user is assigned to.
-     *
-     * @param authorizedResourceId
-     *            The id of the authorized resource.
-     * @return The parent resource IDs transitively and the resourceId parameter.
-     */
-    long[] getAuthorizationScope(long authorizedResourceId);
-
-    /**
-     * There must be only one system resource and it has permission to do everything.
-     *
-     * @return The resource id of the system.
-     */
-    long getSystemResourceId();
-
-    /**
      * Removes a permission definition. If there was no such permission, nothing will happen.
      *
      * @param authorizedResourceId
